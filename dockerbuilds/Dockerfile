@@ -5,11 +5,10 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Copia o código da aplicação para o contêiner
-COPY requirements.txt
 COPY . .
 
 # Instala as dependências especificadas no arquivo requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+# RUN pip install --no-cache-dir -r requirements.txt
 
 # Expõe para o HOST algumas portas, por padrão
 EXPOSE 5001
