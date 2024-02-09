@@ -5,7 +5,7 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Copia o arquivo requirements.txt para o diretório Base
-COPY requirements.txt requirements.txt
+COPY requirements.txt .requirements.txt
 
 # Copia o código da aplicação para o contêiner
 COPY . .
