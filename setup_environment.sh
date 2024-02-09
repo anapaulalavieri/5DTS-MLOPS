@@ -1,6 +1,5 @@
 echo "Creating docker images for all containers"
-docker build -t api_parte2 Parte_2/dockerbuilds/
-docker build -t api_parte2 -f Parte_2/dockerbuilds/Dockerfile Parte_2/docker/
+sudo docker build -t api_parte2 -f Parte_2/dockerbuilds/Dockerfile Parte_2/docker/
 
 echo "Creating network"
 docker network create plat_network
