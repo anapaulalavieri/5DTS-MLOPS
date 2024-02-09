@@ -5,6 +5,7 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Copia o código da aplicação para o contêiner
+COPY requirements.txt /requirements.txt
 COPY . .
 
 # Instala as dependências especificadas no arquivo requirements.txt
