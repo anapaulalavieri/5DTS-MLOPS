@@ -4,6 +4,9 @@ FROM python:3.11-slim
 # Define o diretório de trabalho no contêiner
 WORKDIR /app
 
+# Copia o arquivo requirements.txt para o diretório Base
+COPY requirements.txt requirements.txt
+
 # Copia o código da aplicação para o contêiner
 COPY . .
 
