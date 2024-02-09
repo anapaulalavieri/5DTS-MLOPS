@@ -11,9 +11,9 @@ COPY . /myServer
 
 WORKDIR /myServer
 
-# RUN pip install --upgrade pip
+RUN pip install --upgrade pip
 RUN pip install -r /myServer/requirements.txt
 
-# EXPOSE 8080
+EXPOSE 8080
 
-# CMD [ "python", "api_parte2.py" ]
+CMD [ "python", "api_parte2.py" ]
