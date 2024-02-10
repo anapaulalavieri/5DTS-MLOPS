@@ -1,4 +1,5 @@
-from flask import Flask,request,redirect,Response, send_file, make_response
+# from flask import Flask,request,redirect,Response, send_file, make_response
+
 import requests
 import sys, os, io, uuid, datetime, json, zipfile
 
@@ -49,7 +50,8 @@ def predict(request = request):
         mymodel_url = microservices_config["models"][mymodel]['url']
         logg_track["model"] = mymodel
     except:
-        raise Exception("O modelo deve ser informado no argumento 'model' e deve ser um modelo válido nas configuracoes (config/microservices.json)")
+        # raise Exception("O modelo deve ser informado no argumento 'model' e deve ser um modelo válido nas configuracoes (config/microservices.json)")
+        return mymodel
 
     json_content = try_or(lambda: request.get_json(), {})
     logg_track["input"]["content"] = json_content
