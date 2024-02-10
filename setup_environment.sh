@@ -19,6 +19,6 @@ bash ./Parte_3/update_config.sh
 echo "Config model manager ----------------------------------------------------------------"
 docker run -d --restart always --network plat_network -v $(pwd)/Parte_3/api/config:/myServer/config -v $(pwd)/Parte_3/docker/log:/myServer/log --name modelmanager modelmanager
 
-echo "echo "Conferindo os containers criados ----------------------------------------------"
+echo "Conferindo os containers criados ----------------------=-----------------------------"
 sleep 10
 docker network inspect plat_network
