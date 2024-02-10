@@ -7,7 +7,7 @@ Machine Learning Engeneering- MLOPS
 
 Para acessar a VM criada:
 ```
-ssh <usuário>@<vm_public_ip>
+ssh <usuário>@52.226.67.177
 ```
 
 ### Instalação do Docker
