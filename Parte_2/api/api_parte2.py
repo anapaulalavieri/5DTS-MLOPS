@@ -75,9 +75,9 @@ def predict():
     for col in missing_columns:
         loans_data_classif[col] = False
     
-    # # Padronizar as características e prever o cluster do cliente
-    # scaled_features = scaler.transform(loans_data_classif)
-    # cluster = kmeans.predict(scaled_features)[0]
+    # Padronizar as características e prever o cluster do cliente
+    scaled_features = scaler.transform(loans_data_classif)
+    cluster = kmeans.predict(scaled_features)[0]
     
     # # Atribuir a persona com base no cluster (esta parte você precisa implementar)
     # persona, fraud_propensity = assign_persona(cluster)
