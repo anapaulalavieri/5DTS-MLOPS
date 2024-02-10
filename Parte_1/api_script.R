@@ -1,6 +1,6 @@
 # Carregar o modelo
 # load("/content/modelo_rlog.RData")
-load("C:/Users/anapa/OneDrive/Área de Trabalho/FIAP/15 - Machine Learning Engeneering - MLOPs/MLOPS - Trabalho/modelo_rlog.RData")
+load("C:/Users/anapa/OneDrive/Área de Trabalho/FIAP/15 - Machine Learning Engeneering - MLOPs/5DTS-MLOPS/Parte_1/modelo_rlog.RData")
 
 # Criar função para a API
 #' @post /predict_api
