@@ -77,7 +77,7 @@ def predict():
     
     # Padronizar as características e prever o cluster do cliente
     scaled_features = scaler.transform(loans_data_classif)
-    cluster = kmeans.predict(scaled_features)[0]
+    # cluster = kmeans.predict(scaled_features)[0]
     
     # # Atribuir a persona com base no cluster (esta parte você precisa implementar)
     # persona, fraud_propensity = assign_persona(cluster)
