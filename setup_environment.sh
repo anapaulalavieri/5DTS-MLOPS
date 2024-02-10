@@ -13,6 +13,9 @@ bash ./Parte_3/update_config.sh
 echo "Config model manager"
 docker run -d --restart always --network plat_network -v $(pwd)/Parte_3/api/config:/myServer/config -v $(pwd)/Parte_3/docker/log:/myServer/log --name modelmanager modelmanager
 
+echo "Waiting for containers to start..."
+sleep 10
+
 docker images
 docker network ls
 docker ps
