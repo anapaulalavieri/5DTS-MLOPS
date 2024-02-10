@@ -81,24 +81,19 @@ def predict():
     
     # Padronizar as características e prever o cluster do cliente
     scaled_features = scaler.transform(loans_data_classif)
-    # cluster = kmeans.predict(scaled_features)[0]
+    cluster = kmeans.predict(scaled_features)[0]
     
-    # # Atribuir a persona com base no cluster (esta parte você precisa implementar)
-    # persona, fraud_propensity = assign_persona(cluster)
+    # Atribuir a persona com base no cluster (esta parte você precisa implementar)
+    persona, fraud_propensity = assign_persona(cluster)
     
-    # Teste
-    cluster = '1'
-    persona = '2'
-    fraud_propensity = '3'
-
-    # # Retornar os resultados como JSON
-    # return jsonify({
-    #     'cluster': int(cluster),
-    #     'persona': persona,
-    #     'fraud_propensity': fraud_propensity
-    # })
+    # Retornar os resultados como JSON
+    return jsonify({
+        'cluster': int(cluster),
+        'persona': persona,
+        'fraud_propensity': fraud_propensity
+    })
     
-    return loans_data_classif.to_json(orient="records")
+    # return loans_data_classif.to_json(orient="records")
 
 # Definir a rota raiz
 @app.route("/", methods=['GET', 'POST'])
