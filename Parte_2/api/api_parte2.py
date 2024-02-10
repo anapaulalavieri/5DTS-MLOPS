@@ -99,7 +99,7 @@ def predict():
 @app.route("/", methods=['GET', 'POST'])
 def call_home(request = request):
     print(request.values)
-    return "Server is ready to be used!!!\n"
+    return "Parte_2: Server is ready to be used!!!\n"
 
 if __name__ == '__main__':
     init()
