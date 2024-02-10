@@ -1,6 +1,6 @@
 # Interrompendo os containers
 docker stop parte2_api 
-docker stot modelmanager
+docker stop modelmanager
 
 # Removendo os containers
 docker rm parte2_api
