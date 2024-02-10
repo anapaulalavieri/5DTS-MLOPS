@@ -20,4 +20,4 @@ VOLUME /log
 
 EXPOSE 8080
 
-# CMD [ "python", "modelmanager.py" ]
+CMD [ "python", "modelmanager.py" ]
