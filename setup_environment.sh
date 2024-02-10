@@ -5,6 +5,8 @@ echo "Building Parte_2 ---------------------------------------------------------
 docker build -t parte2_api -f Parte_2/dockerbuilds/Dockerfile Parte_2/api/
 echo "Building Parte_3 --------------------------------------------------------------------"
 docker build -t modelmanager -f Parte_3/dockerbuilds/Dockerfile Parte_3/api/
+echo "Building Parte_4 --------------------------------------------------------------------"
+docker build -t frontendstreamlit -f Parte_4/dockerbuilds/Dockerfile Parte_4/api/
 
 echo "Creating network --------------------------------------------------------------------"
 docker network create plat_network
@@ -18,6 +20,12 @@ bash ./Parte_3/update_config.sh
 
 echo "Config model manager ----------------------------------------------------------------"
 docker run -d --restart always --network plat_network -v $(pwd)/Parte_3/api/config:/myServer/config -v $(pwd)/Parte_3/docker/log:/myServer/log --name modelmanager modelmanager
+
+echo "Updating microservices.json for access API from Frontend ----------------------------"
+bash ./Parte_4/update_config.sh
+
+echo "Config FrontEnd ---------------------------------------------------------------------"
+docker run -d --restart always --network plat_network -p 80:8501 -v $(pwd)/Parte_4/api/config:/myServer/config --name frontendstreamlit frontendstreamlit
 
 echo "Conferindo os containers criados ----------------------=-----------------------------"
 sleep 10
