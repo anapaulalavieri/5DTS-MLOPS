@@ -1,5 +1,5 @@
 echo "Creating docker images for all containers"
-docker build -t parte1_api -f Parte_2/dockerbuilds/Dockerfile Parte_2/api/
+docker build -t parte1_api -f Parte_1/dockerbuilds/Dockerfile Parte_1/api/
 docker build -t parte2_api -f Parte_2/dockerbuilds/Dockerfile Parte_2/api/
 docker build -t modelmanager -f Parte_3/dockerbuilds/Dockerfile Parte_3/api/
 
