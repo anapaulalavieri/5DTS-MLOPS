@@ -39,8 +39,8 @@ app = Flask(__name__)
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    # Obter os dados do cliente do request
-    data = request.get_json()
+    # # Obter os dados do cliente do request
+    # data = request.get_json()
     # features = data['features']  # Supondo que as características do cliente sejam fornecidas como uma lista
     # loans_data_classif = pd.DataFrame(features)
 
@@ -82,13 +82,18 @@ def predict():
     # # Atribuir a persona com base no cluster (esta parte você precisa implementar)
     # persona, fraud_propensity = assign_persona(cluster)
     
-    # # Retornar os resultados como JSON
-    # return jsonify({
-    #     'cluster': int(cluster),
-    #     'persona': persona,
-    #     'fraud_propensity': fraud_propensity
-    # })
-    return jsonify({data})
+    # Teste
+    cluster = '1'
+    persona = '2'
+    fraud_propensity = '3'
+
+    # Retornar os resultados como JSON
+    return jsonify({
+        'cluster': int(cluster),
+        'persona': persona,
+        'fraud_propensity': fraud_propensity
+    })
+    
 
 # Definir a rota raiz
 @app.route("/", methods=['GET', 'POST'])
