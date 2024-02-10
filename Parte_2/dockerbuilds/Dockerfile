@@ -16,5 +16,4 @@ RUN pip install --upgrade pip
 
 EXPOSE 8080
 
-# CMD [ "python", "api_parte2.py" ]
-CMD ["echo", "Executando a API 2! -----------------------------------------]
+CMD [ "python", "api_parte2.py" ]

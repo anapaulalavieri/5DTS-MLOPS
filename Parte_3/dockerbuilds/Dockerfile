@@ -13,7 +13,7 @@ COPY . /myServer
 WORKDIR /myServer
 
 RUN pip install --upgrade pip
-RUN pip install -r /myServer/requirements.txt
+# RUN pip install -r /myServer/requirements.txt
 
 VOLUME /myServer/config
 VOLUME /log
