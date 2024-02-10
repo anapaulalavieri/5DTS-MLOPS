@@ -74,6 +74,10 @@ def predict():
     missing_columns = [col for col in columns_to_check if col not in loans_data_classif.columns]
     for col in missing_columns:
         loans_data_classif[col] = False
+
+    # Forçando a ordem das colunas definida
+    ordem_colunas = ['Interest_rate_spread','loan_limit_cf','approv_in_adv_nopre','loan_type_type3','loan_purpose_p4','Credit_Worthiness_l1','Neg_ammortization_not_neg','interest_only_not_int','lump_sum_payment_lpsm','occupancy_type_ir','credit_type_CRIF','total_units_1U','co_applicant_credit_type_EXP','age_25-34','submission_of_application_to_inst','Region_North','loan_limit_ncf','approv_in_adv_pre','loan_type_type1','loan_type_type2','loan_purpose_p1','loan_purpose_p2','loan_purpose_p3','Credit_Worthiness_l2','Neg_ammortization_neg_amm','interest_only_int_only','lump_sum_payment_not_lpsm','occupancy_type_pr','occupancy_type_sr','credit_type_CIB','credit_type_EQUI','credit_type_EXP','total_units_2U','total_units_3U','total_units_4U','co_applicant_credit_type_CIB','age_35-44','age_45-54','age_55-64','age_65-74','age_<25','age_>74','submission_of_application_not_inst','Region_North-East','Region_central','Region_south']
+    loans_data_classif = loans_data_classif.reindex(columns=ordem_colunas)
     
     # Padronizar as características e prever o cluster do cliente
     scaled_features = scaler.transform(loans_data_classif)
