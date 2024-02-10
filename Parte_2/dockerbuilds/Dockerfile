@@ -16,4 +16,4 @@ RUN pip install -r /myServer/requirements.txt
 
 EXPOSE 8080
 
-CMD [ "python", "api_parte2444.py" ]
+CMD [ "python", "api_parte2.py" ]
