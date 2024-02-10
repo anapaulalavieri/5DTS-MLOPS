@@ -5,11 +5,24 @@ import joblib
 
 # Funções de apoio 
 # -------------------------------------------------------------------------------------------------------
-def assign_persona(cluster):
+def init():
+    global clusters_result
+    global kmeans
+    global scaler
+    global n_clusters
+
     # Carregar a média de propensão de risco dos clusters
     clusters_result = pd.read_json('./config/clusters_result.json')
-    
-    # Obter o nível de risco correspondente ao cluster
+    # Carregar o modelo K-means
+    kmeans = joblib.load('./config/kmeans_model.pkl')
+    # Carregar o scaler
+    scaler = joblib.load('./config/scaler.pkl')
+    # Carregar o número de clusters
+    with open('./config/n_clusters.txt', 'r') as f: n_clusters = int(f.read())
+
+
+def assign_persona(cluster):
+    # # Obter o nível de risco correspondente ao cluster
     risk_level = clusters_result.loc[clusters_result['Cluster'] == cluster, 'Risk Level'].iloc[0]
     fraud_propensity = clusters_result.loc[clusters_result['Cluster'] == cluster, 'Status'].iloc[0]
     
@@ -24,23 +37,13 @@ def one_hot_encode_columns(df, columns):
 # -------------------------------------------------------------------------------------------------------
 app = Flask(__name__)
 
-@app.route('/predict_model2', methods=['POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
     # Obter os dados do cliente do request
     data = request.get_json()
     features = data['features']  # Supondo que as características do cliente sejam fornecidas como uma lista
     loans_data_classif = pd.DataFrame(features)
 
-    # Carregar o modelo K-means
-    kmeans = joblib.load('./config/kmeans_model.pkl')
-    
-    # Carregar o scaler
-    scaler = joblib.load('./config/scaler.pkl')
-    
-    # Carregar o número de clusters
-    # with open('C:/Users/anapa/OneDrive/Área de Trabalho/FIAP/15 - Machine Learning Engeneering - MLOPs/MLOPS - Trabalho/Parte 2/n_clusters.txt', 'r') as f: n_clusters = int(f.read())
-    with open('./config/n_clusters.txt', 'r') as f: n_clusters = int(f.read())
-    
     # Tratando as colunas categóricas
     columns_to_encode = ['loan_limit', 'approv_in_adv', 'loan_type', 'loan_purpose', 'Credit_Worthiness',
                          'Neg_ammortization', 'interest_only', 'lump_sum_payment', 'occupancy_type',
@@ -87,9 +90,11 @@ def predict():
     })
 
 # Definir a rota raiz
-@app.route('/', methods=['GET'])
-def hello_world():
-    return 'Hello, World!'
+@app.route("/", methods=['GET', 'POST'])
+def call_home(request = request):
+    print(request.values)
+    return "Server is ready to be used!"
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    init()
+    app.run(port=8080, host = '0.0.0.0')
