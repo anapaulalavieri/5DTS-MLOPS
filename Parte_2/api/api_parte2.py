@@ -87,14 +87,14 @@ def predict():
     persona = '2'
     fraud_propensity = '3'
 
-    # Retornar os resultados como JSON
-    return jsonify({
-        'cluster': int(cluster),
-        'persona': persona,
-        'fraud_propensity': fraud_propensity
-    })
+    # # Retornar os resultados como JSON
+    # return jsonify({
+    #     'cluster': int(cluster),
+    #     'persona': persona,
+    #     'fraud_propensity': fraud_propensity
+    # })
     
-    # return loans_data_classif
+    return loans_data_classif.to_json(orient="records")
 
 # Definir a rota raiz
 @app.route("/", methods=['GET', 'POST'])
