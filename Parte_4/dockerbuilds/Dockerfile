@@ -23,4 +23,4 @@ VOLUME /myServer/config
 
 EXPOSE 8501
 
-ENTRYPOINT ["streamlit", "run", "frontend/app123.py", "--server.port=8501", "--server.address=0.0.0.0"]
+ENTRYPOINT ["streamlit", "run", "frontend/app.py", "--server.port=8501", "--server.address=0.0.0.0"]
