@@ -1,4 +1,3 @@
-
 import streamlit as st
 import requests
 import json  # Importando json para simulação
@@ -9,6 +8,9 @@ if 'tela' not in st.session_state:
 
 # Função para exibir a tela inicial
 def tela_inicial():
+    
+    # Pasta para arquivo de configuração local (modificar a localização desse arquivo para a pasta correta)
+    local_file = 'C:/Users/anapa/OneDrive/Área de Trabalho/FIAP/15 - Machine Learning Engeneering - MLOPs/5DTS-MLOPS/Parte_4/api/config/microservices.json'
 
     st.title('Quantum Finance - Análise de Clientes')
 
@@ -34,47 +36,52 @@ def tela_inicial():
     if st.button('Verificar'):
 
         dados = {
-            'loan_limit': loan_limit,
-            'approv_in_adv': approv_in_adv,
-            'loan_type': loan_type,
-            'loan_purpose': loan_purpose,
-            'Credit_Worthiness': credit_worthiness,
-            'Interest_rate_spread': interest_rate_spread,
-            'Neg_ammortization': neg_ammortization,
-            'interest_only': interest_only,
-            'lump_sum_payment': lump_sum_payment,
-            'occupancy_type': occupancy_type,
-            'total_units': total_units,
-            'credit_type': credit_type,
-            'co_applicant_credit_type': co_applicant_credit_type,
-            'age': age,
-            'submission_of_application': submission_of_application,
-            'Region': region
-        }
+                "features": [
+                    {
+                        "loan_limit": loan_limit,
+                        "approv_in_adv": approv_in_adv,
+                        "loan_type": loan_type,
+                        "loan_purpose": loan_purpose,
+                        "Credit_Worthiness": credit_worthiness,
+                        "Interest_rate_spread": interest_rate_spread,
+                        "Neg_ammortization": neg_ammortization,
+                        "interest_only": interest_only,
+                        "lump_sum_payment": lump_sum_payment,
+                        "occupancy_type": occupancy_type,
+                        "total_units": total_units,
+                        "credit_type": credit_type,
+                        "co_applicant_credit_type": co_applicant_credit_type,
+                        "age": age,
+                        "submission_of_application": submission_of_application,
+                        "Region": region
+                    }
+                ]
+            }
 
-#         # TESTE INICIO
+        try:
+            with open('/myServer/config/microservices.json') as json_file:
+                microservices_config = json.load(json_file)
+        
+        except FileNotFoundError:
 
-#         url_api1 = 'sua_url_da_api'  # Substitua pela URL real da API
-#         url_api2 = 'sua_url_da_api'  # Substitua pela URL real da API
+            try:
+                with open(local_file) as json_file:
+                    microservices_config = json.load(json_file)
+            except FileNotFoundError:
+                st.error(f'Erro ao tentar acessar o arquivo de configuração do Model Manager. Arquivo localizado em: .../MLOPs/5DTS-MLOPS/Parte_4/api/config/microservices.json')
+                return None
 
-#         #resposta1 = requests.post(url_api1, json=dados)
-#         #if resposta1.status_code == 200:
-#         #    resposta_api1 = resposta1.json()
+        url_api1 = f'{microservices_config["model_manager"]["endpoint"]}/predict?model=parte1_api'
+        url_api2 = f'{microservices_config["model_manager"]["endpoint"]}/predict?model=parte2_api'
+        headers = {'Content-Type': 'application/json'}
 
-#         #resposta2 = requests.post(url_api1, json=dados)
-#         #if resposta2.status_code == 200:
-#         #    resposta_api2 = resposta2.json()
+        resposta1 = requests.post(url_api1, json=dados)
+        if resposta1.status_code == 200:
+           resposta_api1 = resposta1.json()
 
-        resposta_api1 = {
-            "previsoes": 1
-        }
-        resposta_api2 = {
-            "cluster": 1,
-            "fraud_propensity": 0.8179657795,
-            "persona": "High Risk"
-        }
-
-#         # TESTE FIM
+        resposta2 = requests.post(url_api2, json=dados)
+        if resposta2.status_code == 200:
+           resposta_api2 = resposta2.json()
 
         # Armazenando as respostas para uso na tela de resultado
         st.session_state.resposta_api1 = resposta_api1
@@ -94,10 +101,10 @@ def tela_resultado():
 
     # Exibindo resultados como texto
 
-    if resposta_api1['previsoes'] == 1:
-        st.error(f"Propensão à Inadimplência: {resposta_api1['previsoes']} - Sim")
+    if resposta_api1['propension'] == 1:
+        st.error(f"Propensão à Inadimplência: {resposta_api1['propension']} - Sim")
     else:
-        st.success(f"Propensão à Inadimplência: {resposta_api1['previsoes']} - Não")
+        st.success(f"Propensão à Inadimplência: {resposta_api1['propension']} - Não")
 
     if resposta_api2['fraud_propensity'] > 0.5:
         st.error(f"Propensão à Fraude: {fraud_propensity} - Alta")
