@@ -68,7 +68,7 @@ def predict():
     
     # Retornar os resultados como JSON
     return jsonify({
-        'propensiom': int(propensao)
+        'propension': int(propensao)
     })
     
     # return loans_data_classif.to_json(orient="records")
