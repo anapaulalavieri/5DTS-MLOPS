@@ -16,22 +16,22 @@ def tela_inicial():
 
     # Definindo os campos conforme solicitado
     name = st.text_input('Nome')
-    loan_limit = st.selectbox('Limite de Empréstimo', ['cf'], index=0)
-    approv_in_adv = st.selectbox('Aprovação Antecipada', ['nopre'], index=0)
-    loan_type = st.selectbox('Tipo de Empréstimo', ['type3'], index=0)
-    loan_purpose = st.selectbox('Finalidade do Empréstimo', ['p4'], index=0)
-    credit_worthiness = st.selectbox('Solvência de Crédito', ['l1'], index=0)
+    loan_limit = st.selectbox('Limite de Empréstimo', ['cf','ncf'], index=0)
+    approv_in_adv = st.selectbox('Aprovação Antecipada', ['nopre','pre'], index=0)
+    loan_type = st.selectbox('Tipo de Empréstimo', ['type1','type2','type3'], index=0)
+    loan_purpose = st.selectbox('Finalidade do Empréstimo', ['p1','p2','p3','p4'], index=0)
+    credit_worthiness = st.selectbox('Solvência de Crédito', ['l1','l2'], index=0)
     interest_rate_spread = st.number_input('Spread de Taxa de Juros', value=0.39)
-    neg_ammortization = st.selectbox('Amortização Negativa', ['not_neg'], index=0)
-    interest_only = st.selectbox('Apenas Juros', ['not_int'], index=0)
-    lump_sum_payment = st.selectbox('Pagamento Único', ['lpsm'], index=0)
-    occupancy_type = st.selectbox('Tipo de Ocupação', ['ir'], index=0)
-    total_units = st.selectbox('Total de Unidades', ['1U'], index=0)
-    credit_type = st.selectbox('Tipo de Crédito', ['CRIF'], index=0)
-    co_applicant_credit_type = st.selectbox('Tipo de Crédito do Co-solicitante', ['EXP'], index=0)
-    age = st.selectbox('Faixa Etária', ['25-34'], index=0)
-    submission_of_application = st.selectbox('Submissão de Aplicação', ['to_inst'], index=0)
-    region = st.selectbox('Região', ['North'], index=0)
+    neg_ammortization = st.selectbox('Amortização Negativa', ['neg_amm','not_neg'], index=0)
+    interest_only = st.selectbox('Apenas Juros', ['int_only','not_int'], index=0)
+    lump_sum_payment = st.selectbox('Pagamento Único', ['lpsm','not_lpsm'], index=0)
+    occupancy_type = st.selectbox('Tipo de Ocupação', ['ir','pr','sr'], index=0)
+    total_units = st.selectbox('Total de Unidades', ['1U','2U','3U','4U'], index=0)
+    credit_type = st.selectbox('Tipo de Crédito', ['CIB','CRIF','EQUI','EXP'], index=0)
+    co_applicant_credit_type = st.selectbox('Tipo de Crédito do Co-solicitante', ['CIB','EXP'], index=0)
+    age = st.selectbox('Faixa Etária', ['<25','25-34','35-44','45-54','55-64','65-74','>74'], index=0)
+    submission_of_application = st.selectbox('Submissão de Aplicação', ['to_inst','not_inst'], index=0)
+    region = st.selectbox('Região', ['North','North-East','central','south'], index=0)
 
     if st.button('Verificar'):
 
@@ -106,7 +106,7 @@ def tela_resultado():
     else:
         st.success(f"Propensão à Inadimplência: {resposta_api1['propension']} - Não")
 
-    if resposta_api2['fraud_propensity'] > 0.5:
+    if resposta_api2['fraud_propensity'] > 0.25:
         st.error(f"Propensão à Fraude: {fraud_propensity} - Alta")
     else:
         st.success(f"Propensão à Fraude: {fraud_propensity} - Baixa")

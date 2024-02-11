@@ -27,6 +27,5 @@ bash ./Parte_4/update_config.sh
 echo "Config FrontEnd ---------------------------------------------------------------------"
 docker run -d --restart always --network plat_network -p 80:8501 -v $(pwd)/Parte_4/api/config:/myServer/config --name frontendstreamlit frontendstreamlit
 
-echo "Conferindo os containers criados ----------------------=-----------------------------"
-sleep 10
+echo "Conferindo os containers criados ----------------------------------------------------"
 docker network inspect plat_network

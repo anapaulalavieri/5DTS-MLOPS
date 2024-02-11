@@ -1,0 +1,231 @@
+{
+	"info": {
+		"_postman_id": "23604bd3-fe78-4337-bae4-072607fe197a",
+		"name": "FIAP - MLOPS Trabalho Integrado",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14562639"
+	},
+	"item": [
+		{
+			"name": "APIs Locais",
+			"item": [
+				{
+					"name": "Parte 1 - API Propensão de Inadimplência (R)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"features\": [\r\n        {\r\n            \"loan_limit\": \"cf\",\r\n            \"approv_in_adv\": \"nopre\",\r\n            \"loan_type\": \"type3\",\r\n            \"loan_purpose\": \"p4\",\r\n            \"Credit_Worthiness\": \"l1\",\r\n            \"Interest_rate_spread\": 0.39,\r\n            \"Neg_ammortization\": \"not_neg\",\r\n            \"interest_only\": \"not_int\",\r\n            \"lump_sum_payment\": \"lpsm\",\r\n            \"occupancy_type\": \"ir\",\r\n            \"total_units\": \"1U\",\r\n            \"credit_type\": \"CRIF\",\r\n            \"co_applicant_credit_type\": \"EXP\",\r\n            \"age\": \"25-34\",\r\n            \"submission_of_application\": \"to_inst\",\r\n            \"Region\": \"North\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:9000/predict",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9000",
+							"path": [
+								"predict"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parte 1 - API Propensão de Inadimplência (Python)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"features\": [\r\n        {\r\n            \"loan_limit\": \"cf\",\r\n            \"approv_in_adv\": \"nopre\",\r\n            \"loan_type\": \"type3\",\r\n            \"loan_purpose\": \"p4\",\r\n            \"Credit_Worthiness\": \"l1\",\r\n            \"Interest_rate_spread\": 10.39,\r\n            \"Neg_ammortization\": \"not_neg\",\r\n            \"interest_only\": \"not_int\",\r\n            \"lump_sum_payment\": \"lpsm\",\r\n            \"occupancy_type\": \"ir\",\r\n            \"total_units\": \"4U\",\r\n            \"credit_type\": \"CRIF\",\r\n            \"co_applicant_credit_type\": \"EXP\",\r\n            \"age\": \"25-34\",\r\n            \"submission_of_application\": \"to_inst\",\r\n            \"Region\": \"North\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/predict",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"predict"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parte 2 - API Clusterizaçao",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"features\": [\r\n        {\r\n            \"loan_limit\": \"cf\",\r\n            \"approv_in_adv\": \"nopre\",\r\n            \"loan_type\": \"type3\",\r\n            \"loan_purpose\": \"p4\",\r\n            \"Credit_Worthiness\": \"l1\",\r\n            \"Interest_rate_spread\": 0.39,\r\n            \"Neg_ammortization\": \"not_neg\",\r\n            \"interest_only\": \"not_int\",\r\n            \"lump_sum_payment\": \"lpsm\",\r\n            \"occupancy_type\": \"ir\",\r\n            \"total_units\": \"1U\",\r\n            \"credit_type\": \"CRIF\",\r\n            \"co_applicant_credit_type\": \"EXP\",\r\n            \"age\": \"25-34\",\r\n            \"submission_of_application\": \"to_inst\",\r\n            \"Region\": \"North\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/predict",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"predict"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parte 3 - Model Manager",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.15.58:8080/",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"15",
+								"58"
+							],
+							"port": "8080",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "APIs Azure VM",
+			"item": [
+				{
+					"name": "Parte 1 - API Propensão de Inadimplência",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"features\": [\r\n        {\r\n            \"loan_limit\": \"cf\",\r\n            \"approv_in_adv\": \"nopre\",\r\n            \"loan_type\": \"type3\",\r\n            \"loan_purpose\": \"p4\",\r\n            \"Credit_Worthiness\": \"l1\",\r\n            \"Interest_rate_spread\": 10.39,\r\n            \"Neg_ammortization\": \"not_neg\",\r\n            \"interest_only\": \"not_int\",\r\n            \"lump_sum_payment\": \"lpsm\",\r\n            \"occupancy_type\": \"ir\",\r\n            \"total_units\": \"4U\",\r\n            \"credit_type\": \"CRIF\",\r\n            \"co_applicant_credit_type\": \"EXP\",\r\n            \"age\": \"25-34\",\r\n            \"submission_of_application\": \"to_inst\",\r\n            \"Region\": \"North\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://52.226.67.177:81/predict?model=parte1_api",
+							"protocol": "http",
+							"host": [
+								"52",
+								"226",
+								"67",
+								"177"
+							],
+							"port": "81",
+							"path": [
+								"predict"
+							],
+							"query": [
+								{
+									"key": "model",
+									"value": "parte1_api"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parte 2 - API Clusterização",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"features\": [\r\n        {\r\n            \"loan_limit\": \"cf\",\r\n            \"approv_in_adv\": \"nopre\",\r\n            \"loan_type\": \"type3\",\r\n            \"loan_purpose\": \"p4\",\r\n            \"Credit_Worthiness\": \"l1\",\r\n            \"Interest_rate_spread\": 10.39,\r\n            \"Neg_ammortization\": \"not_neg\",\r\n            \"interest_only\": \"not_int\",\r\n            \"lump_sum_payment\": \"lpsm\",\r\n            \"occupancy_type\": \"ir\",\r\n            \"total_units\": \"4U\",\r\n            \"credit_type\": \"CRIF\",\r\n            \"co_applicant_credit_type\": \"EXP\",\r\n            \"age\": \"25-34\",\r\n            \"submission_of_application\": \"to_inst\",\r\n            \"Region\": \"North\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://52.226.67.177:81/predict?model=parte2_api",
+							"protocol": "http",
+							"host": [
+								"52",
+								"226",
+								"67",
+								"177"
+							],
+							"port": "81",
+							"path": [
+								"predict"
+							],
+							"query": [
+								{
+									"key": "model",
+									"value": "parte2_api"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parte 3 - API Model Manager",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://52.226.67.177:81/",
+							"protocol": "http",
+							"host": [
+								"52",
+								"226",
+								"67",
+								"177"
+							],
+							"port": "81",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
