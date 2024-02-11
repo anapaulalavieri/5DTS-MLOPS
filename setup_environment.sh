@@ -19,7 +19,7 @@ echo "Updanting config file ----------------------------------------------------
 bash ./Parte_3/update_config.sh
 
 echo "Config model manager ----------------------------------------------------------------"
-docker run -d --restart always --network plat_network -p 80:8080 -v $(pwd)/Parte_3/api/config:/myServer/config -v $(pwd)/Parte_3/docker/log:/myServer/log --name modelmanager modelmanager
+docker run -d --restart always --network plat_network -p 81:8080 -v $(pwd)/Parte_3/api/config:/myServer/config -v $(pwd)/Parte_3/docker/log:/myServer/log --name modelmanager modelmanager
 
 echo "Updating microservices.json for access API from Frontend ----------------------------"
 bash ./Parte_4/update_config.sh
